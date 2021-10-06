@@ -1,5 +1,6 @@
 package com.alkemy.project.web.app.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,8 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
+
 
 @Entity
 @Table(name = "continente")
@@ -24,17 +24,42 @@ public class ContinenteEntity {
 	@Column
 	private Long idContinente;
 	
-	@NotEmpty
-	@NotBlank
 	@Column
 	private String imagen;
 	
-	@NotEmpty
-	@NotBlank
 	@Column
 	private String denominacion;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "ciudades")
-	private List<CiudadEntity> ciudades;	
+//	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "continente")
+//	private List<CiudadEntity> ciudades = new ArrayList<>();
+
+	public Long getIdContinente() {
+		return idContinente;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
+	public String getDenominacion() {
+		return denominacion;
+	}
+
+	public void setDenominacion(String denominacion) {
+		this.denominacion = denominacion;
+	}
+
+//	public List<CiudadEntity> getCiudades() {
+//		return ciudades;
+//	}
+//
+//	public void setCiudades(List<CiudadEntity> ciudades) {
+//		this.ciudades = ciudades;
+//	}	
+	
+	
 }
