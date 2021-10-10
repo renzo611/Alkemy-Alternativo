@@ -13,19 +13,6 @@ public class CiudadDto {
 	private List<IconoEntity> iconosAsociados;
 	private Long continenteid;
 	
-	public CiudadDto() {
-	}
-
-	public CiudadDto(String imagen, String denominacion, Long cantHab, String continente,
-			List<IconoEntity> iconosAsociados, Long id) {
-		this.id = id;
-		this.imagen = imagen;
-		this.denominacion = denominacion;
-		this.cantHab = cantHab;
-		this.continente = continente;
-		this.iconosAsociados = iconosAsociados;
-	}
-	
 	public Long getId() {
 		return this.id;
 	}

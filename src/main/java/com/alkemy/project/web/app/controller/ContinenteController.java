@@ -27,7 +27,7 @@ public class ContinenteController {
 	}
 	
 	@PostMapping("/continente")
-	public @ResponseBody ContinenteEntity save(@RequestBody ContinenteEntity continente) {
+	public @ResponseBody ContinenteDto save(@RequestBody ContinenteEntity continente) {
 		return contService.save(continente);
 	}
 }

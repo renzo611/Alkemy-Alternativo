@@ -23,10 +23,9 @@ public class ContinenteServiceImpl implements IContinenteService{
 	
 	@Override
 	@Transactional
-	public ContinenteEntity save(ContinenteEntity continente) {
-		//ContinenteEntity cont = this.continenteRepository.save(continente);
-		//return continenteMapper.continenteEntity2Dto(cont);
-		return this.continenteRepository.save(continente);
+	public ContinenteDto save(ContinenteEntity continente) {
+		ContinenteEntity cont = this.continenteRepository.save(continente);
+		return continenteMapper.continenteEntity2Dto(cont);
 	}
 
 	@Override
@@ -35,5 +34,7 @@ public class ContinenteServiceImpl implements IContinenteService{
 		return continenteMapper.continenteEntity2DtoList(this.continenteRepository.findAll());
 	}
 	
-	
+	public ContinenteEntity getById(Long id) {
+		return continenteRepository.getById(id);
+	}
 }

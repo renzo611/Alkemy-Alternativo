@@ -1,6 +1,7 @@
 package com.alkemy.project.web.app.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,16 +26,17 @@ public class CiudadServiceImpl implements CiudadService {
 	}
 
 	@Override
-	public CiudadEntity save(CiudadEntity ciudad) {
-		//CiudadEntity citySaved = ciudadRepo.save(ciudad);
-		//System.out.println(ciudad.getContinente().getDenominacion());
-		//return ciudadMapper.ciudadEntity2Dto2(citySaved);
-		return ciudadRepo.save(ciudad);
+	public CiudadDto save(CiudadEntity ciudad) {
+		CiudadEntity citySaved = ciudadRepo.save(ciudad);
+		System.out.println(ciudad.getContinente().getDenominacion());
+		return ciudadMapper.ciudadEntity2Dto(citySaved);
+		
 	}
 
 	@Override
 	public CiudadEntity getById(Long id) {
-		return ciudadRepo.findById(id).orElse(null);
+		Optional<CiudadEntity> ciudad = ciudadRepo.findById(id);
+		return ciudad.orElse(null);
 	}
 
 	@Override

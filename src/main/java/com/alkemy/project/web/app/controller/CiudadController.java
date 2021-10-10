@@ -32,12 +32,12 @@ public class CiudadController {
 	}
 	
 	@PostMapping("/ciudad")
-	public @ResponseBody CiudadEntity save(@RequestBody CiudadEntity ciudad) {
+	public @ResponseBody CiudadDto save(@RequestBody CiudadEntity ciudad) {
 		return ciudadService.save(ciudad);
 	}
 	
 	@PutMapping("/ciudad/{id}")
-	public @ResponseBody CiudadEntity update(@PathVariable Long id,@RequestBody CiudadDto ciudad) {
+	public @ResponseBody CiudadDto update(@PathVariable Long id,@RequestBody CiudadDto ciudad) {
 		CiudadEntity city = ciudadService.getById(id);
 		if(city != null) {
 			ciudadMapper.CiudadDto2EntityUpdate(ciudad, city);
