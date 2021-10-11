@@ -10,7 +10,7 @@ public class CiudadDto {
 	private String denominacion;
 	private Long cantHab;
 	private String continente;
-	private List<IconoEntity> iconosAsociados;
+	private List<IconoDto> iconosAsociados;
 	private Long continenteid;
 	
 	public Long getId() {
@@ -45,10 +45,10 @@ public class CiudadDto {
 		this.continente = continente;
 	}
 	
-	public List<IconoEntity> getIconosAsociados() {
+	public List<IconoDto> getIconosAsociados() {
 		return iconosAsociados;
 	}
-	public void setIconosAsociados(List<IconoEntity> iconosAsociados) {
+	public void setIconosAsociados(List<IconoDto> iconosAsociados) {
 		this.iconosAsociados = iconosAsociados;
 	}
 	

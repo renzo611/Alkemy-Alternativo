@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.alkemy.project.web.app.dto.ContinenteDto;
+import com.alkemy.project.web.app.dto.ContinenteListDto;
 import com.alkemy.project.web.app.entity.ContinenteEntity;
 
 @Component
@@ -18,10 +19,10 @@ public class ContinenteMapper {
 		return cont;
 	}
 	
-	public List<ContinenteDto> continenteEntity2DtoList(List<ContinenteEntity> continentes){
-		List<ContinenteDto> continentesDto = new ArrayList<>();
+	public List<ContinenteListDto> continenteEntity2DtoList(List<ContinenteEntity> continentes){
+		List<ContinenteListDto> continentesDto = new ArrayList<>();
 		for (ContinenteEntity continente : continentes) {
-			continentesDto.add(this.continenteEntity2Dto(continente));
+			continentesDto.add(new ContinenteListDto(continente.getImagen(), continente.getDenominacion()));
 		}
 		return continentesDto;
 	}
@@ -30,8 +31,6 @@ public class ContinenteMapper {
 		ContinenteDto cont = new ContinenteDto();
 		cont.setImagen(continente.getImagen());
 		cont.setDenominacion(continente.getDenominacion());
-		cont.setId(continente.getIdContinente());
-		//cont.setCiudades(continente.getCiudades());
 		return cont;
 	}
 }

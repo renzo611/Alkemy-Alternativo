@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alkemy.project.web.app.dto.ContinenteDto;
+import com.alkemy.project.web.app.dto.ContinenteListDto;
 import com.alkemy.project.web.app.entity.ContinenteEntity;
 import com.alkemy.project.web.app.mapper.ContinenteMapper;
 import com.alkemy.project.web.app.repository.ContinenteRepository;
@@ -30,7 +31,7 @@ public class ContinenteServiceImpl implements IContinenteService{
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<ContinenteDto> getAll() {
+	public List<ContinenteListDto> getAll() {
 		return continenteMapper.continenteEntity2DtoList(this.continenteRepository.findAll());
 	}
 	

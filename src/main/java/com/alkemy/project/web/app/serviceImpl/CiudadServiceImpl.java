@@ -44,4 +44,14 @@ public class CiudadServiceImpl implements CiudadService {
 		ciudadRepo.delete(ciudad);
 	}
 
+	@Override
+	public List<CiudadDto> findByDenominacion(String denominacion) {
+		return ciudadMapper.ciudadEntity2DtoList(ciudadRepo.findByDenominacion(denominacion));
+	}
+
+	@Override
+	public List<CiudadDto> findByContinenteId(Long id) {
+		return ciudadMapper.ciudadEntity2DtoList(ciudadRepo.findByContinenteId(id));
+	}
+
 }

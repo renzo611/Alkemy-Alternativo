@@ -10,4 +10,6 @@ public interface CiudadService {
 	public CiudadDto save(CiudadEntity ciudad);
 	public CiudadEntity getById(Long id);
 	public void deleteCity(CiudadEntity ciudad);
+	public List<CiudadDto> findByDenominacion(String denominacion);
+	public List<CiudadDto> findByContinenteId(Long id);
 }

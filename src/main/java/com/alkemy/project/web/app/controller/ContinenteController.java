@@ -3,6 +3,8 @@ package com.alkemy.project.web.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,23 +13,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alkemy.project.web.app.dto.ContinenteDto;
+import com.alkemy.project.web.app.dto.ContinenteListDto;
 import com.alkemy.project.web.app.entity.ContinenteEntity;
 import com.alkemy.project.web.app.serviceImpl.ContinenteServiceImpl;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/continente")
 public class ContinenteController {
 	
 	@Autowired
 	private ContinenteServiceImpl contService;
 	
-	@GetMapping("/continente")
-	public @ResponseBody List<ContinenteDto> getall(){
-		return contService.getAll();
+	@GetMapping
+	public ResponseEntity<List<ContinenteListDto>> getall(){
+		List<ContinenteListDto> continentes = contService.getAll();
+		return ResponseEntity.ok().body(continentes);
 	}
 	
-	@PostMapping("/continente")
-	public @ResponseBody ContinenteDto save(@RequestBody ContinenteEntity continente) {
-		return contService.save(continente);
+	@PostMapping
+	public ResponseEntity<ContinenteDto> save(@RequestBody ContinenteEntity continente) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(contService.save(continente));
 	}
 }
